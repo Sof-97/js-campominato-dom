@@ -1,6 +1,8 @@
 let container = document.getElementById('grid');
+let result = document.getElementById('results');
 let mode = 0;
-var bombs = [];
+var bombs;
+let score;
 //Click su play
 document.getElementById('start').addEventListener('click',
     function () {
@@ -21,6 +23,8 @@ document.getElementById('start').addEventListener('click',
         }
         //Rimozione dei div precedenti
         container.innerHTML = '';
+        bombs = [];
+        score = 0;
         //Box creation
         box(mode)
     }
@@ -59,11 +63,12 @@ function box(a) {
         box.addEventListener('click',
             function clicked() {
                 if (bombs.includes(Number(this.innerHTML))) {
-                    this.classList.add('boom');
                     gameEnd();
                 } else {
                     this.classList.add('clicked');
-                    this.removeEventListener('click', clicked)
+                    this.removeEventListener('click', clicked);
+                    score++;
+                    console.log(score)
                 }
             }
         )
@@ -76,13 +81,17 @@ function numGen(z) {
 }
 
 //test scoperta bombe
-function gameEnd(){
-    for(i=0; i<container.children.length; i++){
+function gameEnd() {
+    result.classList.remove('d-none');
+    document.getElementById('score').innerHTML = `Il tuo punteggio è: ${score}!`
+    for (i = 0; i < container.children.length; i++) {
         let check = container.children[i];
-        if(bombs.includes(Number(check.innerHTML))){
-            container.children[i].classList.add('boom');
+        if (bombs.includes(Number(check.innerHTML))) {
+            check.classList.add('boom');
+            check.innerHTML = "&#128163;"
         } else {
-            container.children[i].classList.add('clicked');
+            check.classList.add('clicked');
         }
     }
+
 }

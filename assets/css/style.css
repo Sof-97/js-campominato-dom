@@ -16,6 +16,8 @@ body{
 
 main{
     height: calc(100% - 82px - 53px);
+    justify-content: center;
+    align-items: center;
 }
 
 header,
@@ -90,4 +92,29 @@ footer{
 .boom{
     cursor: default;
     background-color: #f44;
+    font-size: 40px;
+}
+
+.img-bomb{
+    height: 50%;
+    margin-left: 0;
+}
+
+main img{
+    height: 100%
+}
+
+.d-none{
+    display: none !important;
+}
+
+#results{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#score{
+    font-size: 30px;
+    
 }
