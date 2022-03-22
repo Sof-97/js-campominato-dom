@@ -30,13 +30,27 @@ function box(a) {
     for (i = 0; i < a; i++) {
         array.push(i);
     }
-    console.log(array)
+    //Generazione Bombe
+    let bombs = [];
+    for (i = 0; i < 16; i++) {
+        let num = numGen(a);
+        if (!(bombs.includes(num))) {
+            bombs.push(num);
+        } else {
+            i--;
+        }
+    }
     //Swap numeri random
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
-    console.log(array)
+    //Swap bombe
+    for (let i = bombs.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    //Generazione box
     for (i = 1; i <= a; i++) {
         let box = document.createElement('div');
         box.classList.add('box');
@@ -44,7 +58,11 @@ function box(a) {
         container.appendChild(box);
         box.addEventListener('click',
             function () {
-                this.classList.add('clicked');
+                if (bombs.includes(Number(this.innerHTML))) {
+                    this.classList.add('boom');
+                } else {
+                    this.classList.add('clicked');
+                }
             }
         )
     }

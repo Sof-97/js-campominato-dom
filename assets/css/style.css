@@ -72,6 +72,7 @@ footer{
 }
 
 .box{
+    cursor: pointer;
     min-width: calc(100%/var(--column));
     height: calc(100%/var(--column));
     display: flex;
@@ -82,4 +83,10 @@ footer{
 
 .clicked{
     background-color: var(--bg-clicked);
+}
+
+/* NOTE Super Bombe */
+.boom{
+    cursor: default;
+    background-color: #f44;
 }
