@@ -82,6 +82,7 @@ footer{
 }
 
 .clicked{
+    cursor: default;
     background-color: var(--bg-clicked);
 }
 
