@@ -58,10 +58,10 @@ function box(a) {
     for (i = 1; i <= a; i++) {
         let box = document.createElement('div');
         box.classList.add('box');
-        if(i===1){
+        if (i === 1) {
             box.innerHTML = array[i]
-        } else{
-            box.innerHTML = array[i-1];
+        } else {
+            box.innerHTML = array[i - 1];
         }
         container.appendChild(box);
         box.addEventListener('click', clicked
@@ -76,7 +76,7 @@ function clicked() {
         this.classList.add('clicked');
         this.removeEventListener('click', clicked);
         score++;
-        if(score == (mode - 16)){
+        if (score == (mode - 16)) {
             gameEnd(true)
         }
     }
@@ -101,7 +101,7 @@ function gameEnd(a) {
         check.removeEventListener('click', clicked)
     }
     document.getElementById('score').innerHTML = `Il tuo punteggio è: ${score}!`
-    if(a===true){
+    if (a === true) {
         let won = document.createElement('p');
         won.innerHTML += "<h2>Hai Vinto!</h2>";
         document.getElementById('score').appendChild(won)
